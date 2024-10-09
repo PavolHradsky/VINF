@@ -1,19 +1,49 @@
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-url = "https://www.tripadvisor.com/Hotel_Review-g190454-d2557177-Reviews-Austria_Trend_Hotel_Doppio-Vienna.html"
+import undetected_chromedriver as uc
+import re
+import time
+import os
+import random
 
-driver = webdriver.Chrome()
-driver.maximize_window()
+if not os.path.exists('data/shuffled_urls.txt'):
+    with open('data/urls.txt', 'r') as src, open('data/shuffled_urls.txt', 'w+') as dest:
+        lines = src.readlines()
+        random.shuffle(lines)
+        lines = lines[:10000]
+        dest.writelines(lines)
 
 
-driver.get(url)
-pageSource = driver.page_source
+options = webdriver.ChromeOptions()
+options.add_argument("user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) ")
 
-text = driver.find_element(By.TAG_NAME, "body").get_attribute("innerText")
+blocked = 0
 
-with open("result.html", "w") as f:
-    f.write(pageSource)
-with open("result.txt", "w") as f:
-    f.write(text)
+with open('data/shuffled_urls.txt', 'r') as src, open('data/scraped_urls.txt', 'a+') as dest:
+    with uc.Chrome(options=options) as driver:
+        lines = src.readlines()
+        scraped_lines = dest.readlines()
+        for line in lines:
+            if line in scraped_lines:
+                continue
 
-driver.quit()
+            name = line.split("-Reviews-")[1]
+
+            driver.get(line)
+            pageSource = driver.page_source
+            driver.delete_all_cookies()
+
+            if len(re.findall(r"'host':'geo\.captcha-delivery.com'", pageSource)):
+                print(f'Blocked: {line}')
+                blocked += 1
+                if blocked > 3:
+                    break
+                time.sleep(3)
+                continue
+            blocked = 0
+
+            with open(f'data/htmls/{name}', "w+") as html:
+                html.write(pageSource)
+
+            print(line)
+            dest.write(line)
+            time.sleep(3)

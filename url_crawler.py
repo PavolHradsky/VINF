@@ -18,18 +18,17 @@ driver.get(url)
 pageSource = driver.page_source
 driver.delete_all_cookies()
 
-cont = True
+# cont = True
 
 with open("urls2.txt", "a") as f:
     regex = r"\bhref=\"(/SiteIndex-g[0-9]{3,}[^\"]*\.html)\""
     for country in re.finditer(regex, pageSource):
         url = f"{base_url}{country.groups()[0]}"
         print(url)
-        if "United_States" in url:
-            cont = False
-        if cont:
-            continue
-        cont = True
+        # if "United_States" in url:
+        #     cont = False
+        # if cont:
+        #     continue
         time.sleep(3)
         
         # Second level
