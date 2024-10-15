@@ -37,7 +37,7 @@ with open('data/shuffled_urls.txt', 'r') as src, open('data/scraped_urls.txt', '
                 blocked += 1
                 if blocked > 3:
                     break
-                time.sleep(3)
+                time.sleep(4)
                 continue
             blocked = 0
 
@@ -46,4 +46,4 @@ with open('data/shuffled_urls.txt', 'r') as src, open('data/scraped_urls.txt', '
 
             print(line)
             dest.write(line)
-            time.sleep(3)
+            time.sleep(4)
