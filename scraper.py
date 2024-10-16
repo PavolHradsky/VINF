@@ -20,7 +20,8 @@ blocked = 0
 
 
 with open('data/shuffled_urls.txt', 'r') as src, open('data/scraped_urls.txt', 'a+') as dest:
-    with uc.Chrome(options=options) as driver:
+    with uc.Chrome(options=options, version_main=129) as driver:
+    # with webdriver.Chrome(options=options) as driver:
         lines = src.readlines()
         scraped_lines = dest.readlines()
         for line in lines:
