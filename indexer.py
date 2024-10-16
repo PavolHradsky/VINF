@@ -1,5 +1,6 @@
 import json
 import os
+import re
 
 result = []
 
@@ -10,6 +11,24 @@ if not os.path.exists("./data/indexer.json"):
                 continue
             print(i)
 
+            # words = line.split()
+            line = line.lower()
+            line = line.replace("\t", " ")
+            line = line.replace(",", " ")
+            line = line.replace(".", " ")
+            line = line.replace("/", " ")
+            line = line.replace(";", " ")
+            line = line.replace("\"", " ")
+            line = line.replace("\'", " ")
+            line = line.replace("(", " ")
+            line = line.replace(")", " ")
+            line = line.replace("[", " ")
+            line = line.replace("]", " ")
+            line = line.replace("*", " ")
+            line = line.replace(":", " ")
+            line = line.replace("!", " ")
+            line = line.replace("+", " ")
+            line = line.replace("=", " ")
             words = line.split()
             id = int(words[0])
             words = words[1:]
