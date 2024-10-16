@@ -18,6 +18,7 @@ options.add_argument("user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537
 
 blocked = 0
 
+
 with open('data/shuffled_urls.txt', 'r') as src, open('data/scraped_urls.txt', 'a+') as dest:
     with uc.Chrome(options=options) as driver:
         lines = src.readlines()
