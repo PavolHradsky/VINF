@@ -4,8 +4,8 @@ import re
 
 result = []
 
-if not os.path.exists("./data/indexer.json"):
-    with open("./data/extracted.csv", "r") as extracted:
+if not os.path.exists("./data/indexer_usa.json"):
+    with open("./data/extracted_usa.csv", "r") as extracted:
         for i, line in enumerate(extracted.readlines()):
             if i == 0:
                 continue
@@ -60,15 +60,15 @@ if not os.path.exists("./data/indexer.json"):
         # break
 
     # print(result)
-    with open("./data/indexer.json", "w+") as f:
+    with open("./data/indexer_usa.json", "w+") as f:
         f.write(json.dumps(result, indent=2))
 
 result = []
-with open("./data/indexer.json", "r") as f:
+with open("./data/indexer_usa.json", "r") as f:
     result = json.loads(f.read())
     result = sorted(result, key=lambda x: x["count"], reverse=True)
 
-with open("./data/indexer.csv", "w+") as f:
+with open("./data/indexer_usa.csv", "w+") as f:
     for i, word in enumerate(result):
         print(i)
         f.write(f"{i}\t{word['word']}\t{word['count']}")

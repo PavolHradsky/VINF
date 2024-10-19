@@ -41,11 +41,11 @@
 import os
 import re
 
-BASE_URL = "./data/htmls"
+BASE_URL = "./data/htmls_usa"
 files = os.listdir(BASE_URL)
 
-with open(f"./data/urls_ids.csv", "w+") as urls_ids:
-    with open(f"./data/extracted.csv", "w+") as extracted:
+with open(f"./data/urls_ids_usa.csv", "w+") as urls_ids:
+    with open(f"./data/extracted_usa.csv", "w+") as extracted:
         urls_ids.write("id\turl\n")
         extracted.write("id\taddress\tabout\treview_name\treview_stars\treview_count\tproperty_amenities\troom_features\troom_types\tgood_to_know\n")
         for i, file in enumerate(files):

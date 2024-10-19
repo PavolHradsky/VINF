@@ -5,8 +5,8 @@ import time
 import os
 import random
 
-if not os.path.exists('data/shuffled_urls.txt'):
-    with open('data/urls.txt', 'r') as src, open('data/shuffled_urls.txt', 'w+') as dest:
+if not os.path.exists('data/shuffled_urls_usa.txt'):
+    with open('data/urls_usa.txt', 'r') as src, open('data/shuffled_urls_usa.txt', 'w+') as dest:
         lines = src.readlines()
         random.shuffle(lines)
         lines = lines[:10000]
@@ -17,18 +17,20 @@ options = webdriver.ChromeOptions()
 options.add_argument("user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) ")
 
 blocked = 0
+htmls_usa = os.listdir("./data/htmls_usa")
 
+with open('data/scraped_urls_usa.txt', 'r') as f:
+    scraped_lines = f.readlines()
 
-with open('data/shuffled_urls.txt', 'r') as src, open('data/scraped_urls.txt', 'a+') as dest:
+with open('data/shuffled_urls_usa.txt', 'r') as src, open('data/scraped_urls_usa.txt', 'a+') as dest:
     with uc.Chrome(options=options, version_main=129) as driver:
     # with webdriver.Chrome(options=options) as driver:
         lines = src.readlines()
-        scraped_lines = dest.readlines()
         for line in lines:
-            if line in scraped_lines:
+            name = line.split("/")[3]
+            if name in htmls_usa:
+                print(f"Skipping: {line}")
                 continue
-
-            name = line.split("-Reviews-")[1]
 
             driver.get(line)
             pageSource = driver.page_source
@@ -43,7 +45,7 @@ with open('data/shuffled_urls.txt', 'r') as src, open('data/scraped_urls.txt', '
                 continue
             blocked = 0
 
-            with open(f'data/htmls/{name}', "w+") as html:
+            with open(f'data/htmls_usa/{name}', "w+") as html:
                 html.write(pageSource)
 
             print(line)
