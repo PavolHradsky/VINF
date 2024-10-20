@@ -26,7 +26,8 @@ with open('data/shuffled_urls_usa.txt', 'r') as src, open('data/scraped_urls_usa
     with uc.Chrome(options=options, version_main=129) as driver:
     # with webdriver.Chrome(options=options) as driver:
         lines = src.readlines()
-        for line in lines:
+        for i, line in enumerate(lines):
+            print(i)
             name = line.split("/")[3]
             if name in htmls_usa:
                 print(f"Skipping: {line}")
