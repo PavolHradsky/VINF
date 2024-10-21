@@ -1,9 +1,6 @@
 import os
 import re
 
-BASE_URL = "./data/htmls_usa"
-files = os.listdir(BASE_URL)
-
 
 def get_data_with_regex(html: str, regex: str) -> str:
     str = re.findall(regex, html)
@@ -15,13 +12,15 @@ def extract_data(urls_ids_path: str, extracted_path: str):
     with open(urls_ids_path, "w+") as urls_ids:
         with open(extracted_path, "w+") as extracted:
             urls_ids.write("id\turl\n")
-            extracted.write("id\taddress\tabout\treview_name\treview_stars\treview_count\tproperty_amenities\troom_features\troom_types\tgood_to_know\n")
+            extracted.write("id\tname\taddress\tabout\treview_name\treview_stars\treview_count\tproperty_amenities\troom_features\troom_types\tgood_to_know\n")
             for i, file in enumerate(files):
                 with open(f"{BASE_URL}/{file}", "r") as f:
                     html = f.read()
 
                     url = get_data_with_regex(html, r"<link rel=\"canonical\" href=\"(.*?)\">")
                     print(url)
+
+                    name = get_data_with_regex(html, r"<h1 id=\"HEADING\"[^\>]*>(.*?)</h1>")
 
                     address = get_data_with_regex(html, r"<div class=\"fgplF\">.*?<div class=\"FhOgt H3 f u fRLPH\"><span class=\".*?<span class=\"biGQs _P pZUbB KxBGd\">(.*?)</span>")
 
@@ -59,8 +58,10 @@ def extract_data(urls_ids_path: str, extracted_path: str):
                     good_to_know = good_to_know.strip()
 
                     urls_ids.write(f"{i}\t{url}\n")
-                    extracted.write(f"{i}\t{address}\t{about}\t{review_name}\t{review_stars}\t{review_count}\t{property_amenities}\t{room_features}\t{room_types}\t{good_to_know}\n")
+                    extracted.write(f"{i}\t{name}\t{address}\t{about}\t{review_name}\t{review_stars}\t{review_count}\t{property_amenities}\t{room_features}\t{room_types}\t{good_to_know}\n")
 
 
 if __name__ == "__main__":
+    BASE_URL = "./data/htmls_usa"
+    files = os.listdir(BASE_URL)
     extract_data("./data/urls_ids_usa.csv", "./data/extracted_usa.csv")

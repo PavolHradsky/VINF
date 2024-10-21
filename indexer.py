@@ -3,11 +3,16 @@ import os
 import re
 
 from utils import tokenize
-result = []
-result_words = []
 
-if not os.path.exists("./data/indexer_usa.json"):
-    with open("./data/extracted_usa.csv", "r") as extracted:
+
+def indexer(indexer_json_path: str, extracted_path: str):
+    result = []
+    result_words = []
+
+    if os.path.exists(indexer_json_path):
+        return None
+    
+    with open(extracted_path, "r") as extracted:
         for i, line in enumerate(extracted.readlines()):
             if i == 0:
                 continue
@@ -42,11 +47,10 @@ if not os.path.exists("./data/indexer_usa.json"):
                         the_document = next(x for x in the_word["documents"] if x["id"] == id)
                         the_document["count"] += 1
 
-        # break
-
-    # print(result)
-    with open("./data/indexer_usa.json", "w+") as f:
+    with open(indexer_json_path, "w+") as f:
         f.write(json.dumps(result, indent=2))
+
+    return result
 
 
 def get_data_from_json(json_path: str) -> list:
@@ -56,19 +60,32 @@ def get_data_from_json(json_path: str) -> list:
         result = sorted(result, key=lambda x: x["count"], reverse=True)
     return result
 
-get_data_from_json("./data/indexer_usa.json")
+
 
 def write_terms_ids(terms_ids_path: str, data: list):
     with open(terms_ids_path, "w+") as f:
         for i, word in enumerate(data):
             f.write(f"{i}\t{word['word']}\n")
 
-write_terms_ids("./data/terms_ids_usa.csv")
 
-with open("./data/indexer_usa.csv", "w+") as f:
-    for i, word in enumerate(result):
-        print(i)
-        f.write(f"{i}\t{word['count']}\t{len(word['documents'])}")
-        for doc in word["documents"]:
-            f.write(f"\t{doc['id']}\t{doc['count']}")
-        f.write("\n")
+def write_indexer_csv(indexer_path, result):
+    with open(indexer_path, "w+") as f:
+        for i, word in enumerate(result):
+            print(i)
+            f.write(f"{i}\t{word['count']}\t{len(word['documents'])}")
+            for doc in word["documents"]:
+                f.write(f"\t{doc['id']}\t{doc['count']}")
+            f.write("\n")
+
+
+if __name__ == "__main__":
+    INDEXER_JSON_PATH = "./data/indexer_usa.json"
+    INDEXER_PATH = "./data/indexer_usa.csv"
+    EXTRACTED_PATH = "./data/extracted_usa.csv"
+    TERMS_IDS_PATH = "./data/terms_ids_usa.csv"
+
+    result = indexer(INDEXER_JSON_PATH, EXTRACTED_PATH)
+    if not result:
+        result = get_data_from_json(INDEXER_JSON_PATH)
+    write_terms_ids(TERMS_IDS_PATH, result)
+    write_indexer_csv(INDEXER_PATH, result)
