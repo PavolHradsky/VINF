@@ -1,7 +1,8 @@
 import os
 import math
 
-query = "nearly here"
+query = "hotel parking wifi 5"
+# query = "bicycle non-smoking new york"
 
 query = query.lower()
 query = query.replace("\t", " ")
@@ -29,6 +30,7 @@ with open("./data/indexer_usa.csv", "r") as indexer:
     indexes = [index.split("\t") for index in indexes]
     terms = [x[1] for x in indexes]
     
+    # TODO: najprv booleovsky model, intercest, potom toto
     for qtoken in query_tokens:
         if qtoken not in terms:
             print("not in indexes")
@@ -54,8 +56,8 @@ with open("./data/indexer_usa.csv", "r") as indexer:
                 docs_score[doc_id] += tf_idf * wf
 
 docs_score = sorted(docs_score.items(), key=lambda x:x[1], reverse=True)
-if len(docs_score) > 20:
-    docs_score = docs_score[:20]
+if len(docs_score) > 10:
+    docs_score = docs_score[:10]
 # print(docs_score)
 
 with open("./data/urls_ids_usa.csv", "r") as f:
@@ -63,3 +65,4 @@ with open("./data/urls_ids_usa.csv", "r") as f:
     for doc in docs_score:
         doc_id = doc[0]
         print(lines[int(doc_id)+1].split()[1][:-1])
+        # TODO: vypisat nieco ine, aj skore
