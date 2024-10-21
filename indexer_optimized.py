@@ -33,6 +33,7 @@ if not os.path.exists("./data/indexer_usa.json"):
             words = line.split()
             id = int(words[0])
             words = words[1:]
+            # TODO: pridat DF
         
             for word in words:
                 if not word in result_words:
