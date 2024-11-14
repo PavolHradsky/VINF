@@ -40,6 +40,7 @@ df = spark.read.format('com.databricks.spark.xml') \
     .option("rowTag", "page") \
     .schema(xml_schema) \
     .load("hdfs://localhost:9000/user/root/enwiki-latest-pages-articles-1.xml.bz2")
+    # .load("hdfs://localhost:9000/user/root/enwiki-latest-pages-articles17.xml-p22070393p23570392.bz2")
 
 # df.printSchema()
 
@@ -92,7 +93,7 @@ result = result.withColumn('about', regexp_extract(col('text'), r"'''.*?\n", 0))
 result = result.withColumn('about', regexp_replace(col('about'), r'\|', ' '))
 
 result = result.withColumn('text', regexp_replace(col('text'), r'\{\{.*?\}\}', ' '))
-result = result.withColumn('text', regexp_replace(col('text'), r'\|', ' '))
+# result = result.withColumn('text', regexp_replace(col('text'), r'\|', ' '))
 
 infobox_fields = [
     'name', 'location', 'address', 'date_opened', 'opening_date', 'built', 'date_closed', 'closing_date', 
@@ -101,6 +102,7 @@ infobox_fields = [
 
 for field in infobox_fields:
     result = result.withColumn(field, regexp_extract(col('text'), '(?s)\{\{Infobox(?:(?!\n\}\}\n).)*\| ?' + field + ' +=([^\n]*)', 1))
+    result = result.withColumn(field, regexp_replace(col(field), r'\|', ' '))
 
 
 result = result.drop('revision')
