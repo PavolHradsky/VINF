@@ -1,5 +1,7 @@
 import os
 
+from templates import final_fields, extracted_fields, wiki_fields
+
 BASE_DIR = "data/wiki"
 
 with open("data/extracted_usa.csv", "r") as extracted:
@@ -11,28 +13,6 @@ with open("data/extracted_usa.csv", "r") as extracted:
 last_id = int(data[-1][0])
 next_id = last_id + 1
 
-extracted_fields = [
-    'id', 'name', 'address', 'about', 'review_name', 'review_stars', 'review_count', 
-    'property_amenities', 'room_features', 'room_types', 'good_to_know'
-]
-
-wiki_fields = [
-    'title', 'categories', 'about', 'name', 'location', 'address', 'date_opened', 'opening_date', 'built', 'date_closed', 'closing_date', 
-    'rooms', 'number_of_rooms', 'developer', 'architect', 'owner', 'floors', 'website', 'parking', 'stars'
-]
-
-final_fields = [
-    'id', 'name', 'address', # address if set, else location
-    'about', 'about_wiki', 'review_name', 'review_stars', 'review_count', 
-    'property_amenities', # add parking
-    'room_features', 'room_types', 'good_to_know',
-    'categories', # split by ;
-    'date_opened', # date_opened / opening_date / built
-    'date_closed', # date_closed / closing_date
-    'rooms', # rooms / number_of_rooms
-    'developer', 'architect', 'owner', 'floors', 'website', 'hotel_stars'
-]
-
 result_list = []
 
 with open(f"data/wiki.csv", "r") as wikifile:
@@ -40,6 +20,8 @@ with open(f"data/wiki.csv", "r") as wikifile:
     wikidata = [x.replace('\n', '') for x in wikidata]
     wikidata = [x.split('\t') for x in wikidata]
     for doc in wikidata:
+        if doc[0].startswith("[[Category"):
+            continue
         if len(doc) < len(wiki_fields):
             doc += [''] * (len(wiki_fields) - len(doc))
         if doc[0] in names:
