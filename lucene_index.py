@@ -47,6 +47,8 @@ with open("data/extracted_all.csv", "r+") as f:
         doc.add(StoredField("website", line[final_fields.index("website")]))
         doc.add(StringField("hotel_stars", line[final_fields.index("hotel_stars")], Field.Store.YES))
 
+        doc.add(TextField("all_fields", " ".join(line), Field.Store.NO))
+
         writer.addDocument(doc)
 
 writer.commit()
