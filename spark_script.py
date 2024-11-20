@@ -5,7 +5,7 @@
 # hadoop fs -ls ./
 # export PYSPARK_PYTHON=python3
 # pyspark --packages com.databricks:spark-xml_2.12:0.18.0
-# spark-submit --packages com.databricks:spark-xml_2.12:0.18.0 spark_script.py
+# spark-submit --packages com.databricks:spark-xml_2.12:0.18.0 spark_script.py input_file output_name
 
 # hadoop fs -copyToLocal ./wiki ./wiki
 # docker cp spark:/wiki ./
@@ -23,6 +23,10 @@ from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType, StructField, StringType
 from pyspark.sql.functions import regexp_extract, regexp_replace, col, udf
 import re
+import sys
+
+if len(sys.argv) < 2:
+    print("not enough params")
 
 spark = SparkSession \
     .builder \
@@ -39,8 +43,9 @@ xml_schema = StructType([
 df = spark.read.format('com.databricks.spark.xml') \
     .option("rowTag", "page") \
     .schema(xml_schema) \
-    .load("hdfs://localhost:9000/user/root/enwiki-latest-pages-articles-1.xml.bz2")
+    .load(sys.argv[1])
     # .load("hdfs://localhost:9000/user/root/enwiki-latest-pages-articles17.xml-p22070393p23570392.bz2")
+    # .load("hdfs://localhost:9000/user/root/enwiki-latest-pages-articles-1.xml.bz2")
 
 # df.printSchema()
 
@@ -57,9 +62,16 @@ us_states = [
     "West Virginia", "Wisconsin", "Wyoming"
 ]
 
-pattern = r"(?i)\[\[Category:Hotels in [^\]]*(" + "|".join(us_states) + r")"
+pattern1 = r"(?i)\[\[Category:Hotels in [^\]]*(" + "|".join(us_states) + r")"
+pattern2 = r"(?i)'''.*?(hotel)?.*?(" + "|".join(us_states) + r").*?(hotel)?\n"
+pattern3 = r"(?i).*?(hotel)?.*?(" + "|".join(us_states) + r").*?(hotel)?"
 
-result = df.filter(df.revision.text.rlike(pattern) & ~df.title.startswith('Category:')).cache()
+result = df.filter(
+    df.revision.text.rlike(pattern1) 
+    | df.revision.text.rlike(pattern2) 
+    | df.title.rlike(pattern3)
+    & ~df.title.startswith('Category:')
+).cache()
 
 # filtered_df.show(5)
 
@@ -104,6 +116,7 @@ for field in infobox_fields:
     result = result.withColumn(field, regexp_extract(col('text'), '(?s)\{\{Infobox(?:(?!\n\}\}\n).)*\| ?' + field + ' +=([^\n]*)', 1))
     result = result.withColumn(field, regexp_replace(col(field), r'\|', ' '))
 
+result = result.withColumn('rooms_from_text', regexp_extract(col('text'), r"([0-9]+) ?rooms", 1))
 
 result = result.drop('revision')
 result = result.drop('text')
@@ -112,4 +125,4 @@ result.write \
     .mode("overwrite") \
     .option("sep", "\t") \
     .option("quote", "") \
-    .csv("hdfs://localhost:9000/user/root/wiki")
+    .csv("hdfs://localhost:9000/user/root/" + sys.argv[2])

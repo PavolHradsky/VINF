@@ -1,6 +1,6 @@
 final_fields = [
     'id', 'name', 'address', # address if set, else location
-    'about', 'about_wiki', 'review_name', 'review_stars', 'review_count', 
+    'state', 'about', 'about_wiki', 'review_name', 'review_stars', 'review_count', 
     'property_amenities', # add parking
     'room_features', 'room_types', 'good_to_know',
     'categories', # split by ;
