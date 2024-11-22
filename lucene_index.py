@@ -1,9 +1,12 @@
 import lucene
 from java.nio.file import Paths
 from org.apache.lucene.store import FSDirectory
+from org.apache.lucene.analysis.standard import StandardAnalyzer
 from org.apache.lucene.analysis.en import EnglishAnalyzer
-from org.apache.lucene.index import IndexWriter, IndexWriterConfig
-from org.apache.lucene.document import Document, StringField, TextField, Field, IntPoint, FloatPoint, StoredField
+from org.apache.lucene.index import IndexWriter, IndexWriterConfig, FieldInfo, IndexOptions
+from org.apache.lucene.document import Document, Field, FieldType, StringField, TextField, IntPoint, FloatPoint, StoredField
+import shutil
+import os
 
 from templates import final_fields
 
@@ -11,6 +14,7 @@ from templates import final_fields
 lucene.initVM(vmargs=['-Djava.awt.headless=true'])
 
 index_path = "pylucene_index"
+if os.path.exists(index_path): shutil.rmtree(index_path)
 directory = FSDirectory.open(Paths.get(index_path))
 
 analyzer = EnglishAnalyzer()
@@ -23,7 +27,7 @@ with open("data/extracted_all.csv", "r+") as f:
         line = line.split("\t")
 
         doc = Document()
-        doc.add(StringField("id", line[final_fields.index("id")], Field.Store.NO))
+        doc.add(StoredField("id", line[final_fields.index("id")]))
         doc.add(TextField("name", line[final_fields.index("name")], Field.Store.YES))
         doc.add(TextField("address", line[final_fields.index("address")], Field.Store.YES))
         doc.add(StringField("state", line[final_fields.index("state")], Field.Store.YES))
@@ -42,8 +46,6 @@ with open("data/extracted_all.csv", "r+") as f:
         doc.add(TextField("room_features", line[final_fields.index("room_features")], Field.Store.NO))
         doc.add(TextField("room_types", line[final_fields.index("room_types")], Field.Store.NO))
         doc.add(TextField("good_to_know", line[final_fields.index("good_to_know")], Field.Store.NO))
-        for category in line[final_fields.index("categories")].split(";"):
-            doc.add(StringField("categories", category, Field.Store.NO))
         doc.add(TextField("date_opened", line[final_fields.index("date_opened")], Field.Store.NO))
         doc.add(TextField("date_closed", line[final_fields.index("date_closed")], Field.Store.NO))
         if line[final_fields.index("rooms")].strip(): doc.add(IntPoint("rooms", int(line[final_fields.index("rooms")])))
