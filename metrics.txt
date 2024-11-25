@@ -4,16 +4,16 @@ query: hotel new york bike wifi
 
 tripadvisor results:
 
-New York Hotel
-Sanctuary Hotel New York
-Ace Hotel New York
-Park Central Hotel New York
-The Roxy Hotel New York
-Loews Regency New York Hotel
-The Jewel Hotel, New York
-Sheraton New York Times Square HotelNew York Nomad
-Hotel 32 32 New York
-Renaissance New York Times Square Hotel
+Arthouse_Hotel_New_York_City-New_York_City_New_York
+The_Empire_Hotel-New_York_City_New_York
+Soho_Grand_Hotel-New_York_City_New_York
+Motto_by_Hilton_New_York_City_Chelsea-New_York_City_New_York
+Arlo_Midtown-New_York_City_New_York
+OYO_Hotel_Buena_Vista_Delhi-Delhi_Catskill_Region_New_York
+Holiday_Inn_Express_Queens_Maspeth_an_IHG_hotel-Maspeth_Queens_New_York
+The_Muse_New_York-New_York_City_New_York
+New_York_Marriott_Downtown-New_York_City_New_York
+Holiday_Inn_Express_New_York_City_Wall_Street_an_IHG_hotel-New_York_City_New_York
 
 my results:
 The Tandem Bike Inn
@@ -36,62 +36,62 @@ query: san francisco california free parking gym air conditioning
 
 tripadvisor results:
 
-Hotel Kabuki
-Hotel Caza Fisherman's Wharf
-Coventry Motor Inn
-Hotel Riu Plaza Fisherman’s Wharf
-Chelsea Inn
-Grand Hyatt at SFO
-Inn at the Opera
-Hotel Amari
-Grant Plaza Hotel
-Hotel Fusion
+Holiday_Inn_San_Francisco_Golden_Gateway_an_IHG_hotel-San_Francisco_California
+Kimpton_Hotel_Enso-San_Francisco_California
+Hotel_Zephyr_San_Francisco-San_Francisco_California
+Hotel_G_San_Francisco-San_Francisco_California
+The_Hotel_Majestic-San_Francisco_California
+La_Casa_Inn-San_Francisco_California
+Alpha_Inn_Suites-San_Francisco_California
+Days_Inn_by_Wyndham_San_Francisco_Lombard-San_Francisco_California
+Signature_Inn_San_Francisco_Marina_District-San_Francisco_California
+La_Luna_Inn_Ascend_Hotel_Collection-San_Francisco_California
 
 
 my results:
 Omni San Francisco Hotel
 Travelodge South San Francisco
-Kimpton Hotel Enso
-Hotel Zephyr San Francisco
-Holiday Inn San Francisco-Golden Gateway, an IHG hotel
-Days Inn by Wyndham Novato/San Francisco
+Kimpton Hotel Enso                      OK
+Hotel Zephyr San Francisco              OK
+Holiday Inn San Francisco-Golden Gateway, an IHG hotel  OK
+Days Inn by Wyndham Novato/San Francisco        OK
 Layne Hotel
 Hilton Garden Inn San Francisco/Oakland Bay Bridge
 Minna Hotel
 Cable Car Hotel
 
-0/10
+4/10
 
 =============================================================
 3.
 query: sunset inn
 
 tripadvisor results:
-Sunset Inn (Pacific Grove, California)
-Sunset Inn (Panama City Beach, Florida)
-The Sunset Inn (Sunset Beach, North Carolina)
-Sunset Beach Inn (Sanibel Island, Florida)                                                      OK
-Holiday Inn Resort Aruba-Beach Resort & Casino, an IHG hotel (Palm - Eagle Beach, Aruba)
-The Inn on Pamlico Sound (Buxton, North Carolina)
-Sunset Inn (Hunstanton, Norfolk, England)
-Sea Otter Inn (Cambria, California)
-Inn on the Beach (St. Pete Beach, Florida)
-Island Inn (Sanibel Island, Florida)
+Sunset_Inn-Pacific_Grove_Monterey_County_California
+Sunset_Beach_Inn-Sanibel_Island_Florida
+Cayucos_Sunset_Inn_Bed_Breakfast-Cayucos_San_Luis_Obispo_County_California
+Estero_Inn-Morro_Bay_San_Luis_Obispo_County_California
+Bay_Shore_Inn-Sturgeon_Bay_Wisconsin
+Sunset_Inn-Jacksonville_North_Carolina
+Huntington_Surf_Inn-Huntington_Beach_California
+Inn_at_Langley-Langley_Whidbey_Island_Washington
+Island_Motor_Inn_Resort-Chincoteague_Island_Virginia
+The_Sunset_Inn-Provincetown_Cape_Cod_Massachusetts
 
 
 my results:
 Sunset Inn (1400 Northwest 6th Street, Grants Pass, OR 97526-1256)
-Sunset Inn (497 Western Blvd, Jacksonville, NC 28546-6815)
+Sunset Inn (497 Western Blvd, Jacksonville, NC 28546-6815)                  OK
 Sunset Inn (82200 Overseas Highway, Islamorada, FL 33036)
-Sunset Beach Inn (3287 West Gulf Drive, Sanibel Island, FL 33957)               OK
-The Sunset Inn (142 Bradford St, Provincetown, MA 02657-1450)
+Sunset Beach Inn (3287 West Gulf Drive, Sanibel Island, FL 33957)           OK             
+The Sunset Inn (142 Bradford St, Provincetown, MA 02657-1450)               OK
 Sunset House Alexandria (12 Sunset Dr, Alexandria, VA 22301-2636)
 Sunset View Guest Cottages (26 Cemetery Rd, Natchez, MS 39120-2028)
 Sunset Lakes (2931 Vineland Rd 2949 Vineland Road, Orlando, FL 34746-5505)
 Palms Courtyard Inn (5921 Westminster Boulevard, Westminster, CA 92683)
 Sunset Isle RV and Yacht Resort (260 Timber Island Rd, Carrabelle, FL 32322-5002)
 
-1/10
+3/10
 
 
 =============================================================
@@ -99,48 +99,48 @@ Sunset Isle RV and Yacht Resort (260 Timber Island Rd, Carrabelle, FL 32322-5002
 query: holiday inn alabama wifi parking
 
 tripadvisor results:
-Holiday Inn Montgomery Airport South, an IHG hotel (Montgomery, Alabama)
-Holiday Inn Express & Suites Anniston/Oxford, an IHG hotel (Oxford, Alabama)
-Holiday Inn Guin, an IHG hotel (Guin, Alabama)
-Holiday Inn Express & Suites Tuscaloosa-University (Tuscaloosa, Alabama)            OK
-Holiday Inn Express Jasper, an IHG hotel (Jasper, Alabama)
-Holiday Inn Mobile - Airport, an IHG hotel (Mobile, Alabama)
-Holiday Inn Express & Suites Athens, an IHG hotel (Athens, Alabama)
-Holiday Inn Express & Suites Andalusia, an IHG Hotel (Andalusia, Alabama)
-Holiday Inn Mobile West - I-10, an IHG hotel (Mobile, Alabama)
-Holiday Inn Express Clanton, an IHG hotel (Clanton, Alabama)
+Holiday_Inn_Express_Suites_Tuscaloosa_University-Tuscaloosa_Alabama
+Holiday_Inn_Express_Suites_Auburn_University_Area_an_IHG_hotel-Auburn_Alabama
+Drury_Inn_Suites_Birmingham_Grandview-Birmingham_Alabama
+Holiday_Inn_Express_Suites_Birmingham_Inverness_280_an_IHG_hotel-Birmingham_Alabama
+Springdale_Inn_Suites-Mobile_Alabama
+Hamilton_Inn_Bessemer-Bessemer_Alabama
+Holiday_Inn_Express_Suites_Pell_City_an_IHG_hotel-Pell_City_Alabama
+Days_Inn_by_Wyndham_Clanton_AL-Clanton_Alabama
+Comfort_Inn_Suites_Mobile_Near_Eastern_Shore_Centre-Daphne_Alabama
+Comfort_Inn_Suites_Monggomery-Montgomery_Alabama
 
 
 my results:
 
 Holiday Inn Express Visalia - Sequoia Gateway Area, an IHG hotel (5625 W. Cypress Ave., Visalia, CA 93277)
 Holiday Inn Express &amp; Suites Tuscaloosa-University (1120 Veterans Memorial Parkway, Tuscaloosa, AL 35404-5812)      OK
-Springdale Inn &amp; Suites (80 Springdale Blvd, Mobile, AL 36606-3916)
+Springdale Inn &amp; Suites (80 Springdale Blvd, Mobile, AL 36606-3916)                                                 OK
 Holiday Inn Express &amp; Suites Greensboro - Lake Oconee (1040 Hospitality Dr, Greensboro, GA 30642-4289)
 Holiday Inn Express Allentown North, an IHG hotel (1715 Plaza Ln Route 22 at 15th St, Allentown, PA 18104-9704)
 Holiday Inn Express &amp; Suites Mobile - University Area, an IHG hotel (109 Long Street, Mobile, AL 36608)
 Holiday Inn Express &amp; Suites Murfreesboro West, An Ihg Hotel (2230 Medical Center Parkway, Murfreesboro, TN 37129)
 Holiday Inn Orlando East - Ucf Area, an IHG hotel (1724 N. Alafaya Trail, Orlando, FL 32826)
-Holiday Inn Express Salem, an IHG hotel (240 North Cunningham Road, Salem, OH 44460)
+Holiday Inn Express Salem, an IHG hotel (240 North Cunningham Road, Salem, OH 44460)                                    OK
 Holiday Inn Express &amp; Suites - Liberal (445 E Pancake Blvd, Liberal, KS 67901-4210)
 
-1/10
+3/10
 
 =============================================================
 5.
 query: Clarksville Arkansas free parking wifi air conditioning
 
 tripadvisor results:
-Holiday Inn Express & Suites Clarksville, an IHG hotel (Clarksville, Arkansas)
-Hampton Inn By Hilton Clarksville (Clarksville, Arkansas)
-Executive Inn (Clarksville, Arkansas)
-Quality Inn & Suites (Clarksville, Arkansas)
-Hampton Inn North Little Rock Mccain Mall (North Little Rock, Arkansas)
-Little Rock Marriott (Little Rock, Arkansas)
-La Quinta Inn & Suites by Wyndham Downtown Conference Center (Little Rock, Arkansas)
-Days Inn & Suites by Wyndham Russellville (Russellville, Arkansas)
-Grand Oaks Hotel (Branson, Missouri)
-Hilton Promenade at Branson Landing (Branson, Missouri)
+Hampton_Inn_Suites_Little_Rock_Downtown-Little_Rock_Arkansas
+Westgate_Branson_Lakes_Resort-Hollister_Missouri
+Courtyard_Little_Rock_Downtown-Little_Rock_Arkansas
+White_Wing_Lodge-Branson_Missouri
+Days_Inn_by_Wyndham_Harrison-Harrison_Arkansas
+Angler_s_White_River_Resort-Mountain_View_Arkansas
+Candlewood_Suites_Hot_Springs_an_IHG_hotel-Hot_Springs_Arkansas
+Flatiron_Flats-Eureka_Springs_Arkansas
+Quality_Inn_Suites_Hot_Springs_Lake_Hamilton-Hot_Springs_Arkansas
+Motel_6_North_Little_Rock_Ar-North_Little_Rock_Arkansas
 
 
 
@@ -148,7 +148,7 @@ my results:
 
 Microtel Inn &amp; Suites By Wyndham Clarksville (241 Holiday Dr, Clarksville, TN 37040)
 Clarksville RV Resort by Rjourney (1270 Tylertown Rd, Clarksville, TN 37040-5603)
-Hampton Inn Louisville-north/clarksville (1501 Broadway, Clarksville, IN 47129)
+Hampton Inn Louisville-north/clarksville (1501 Broadway, Clarksville, IN 47129)         OK
 The Sunnyside Sisters Bed and Breakfast (104 Shiney Rock Road, Clarksville, VA 23927)
 Tru By Hilton Clarksville (3030 Mr. C. Drive, Clarksville, TN 37040)
 Best Western Plus Louisville North (1485 Broadway St, Clarksville, IN 47129)
@@ -157,14 +157,27 @@ Century Manor Bed and Breakfast (900 Virginia Ave Hwy 58, Clarksville, VA 23927-
 Super 8 by Wyndham Arkansas City KS (3228 N Summit St, Arkansas City, KS 67005-8867)
 Deluxe Inn (21172 Mission Blvd, Hayward, CA 94541-2010)
 
-0/10
+1/10
 
 
 
-Overall: 2/50
-TP: 4
-FP: 48
-FN: 48
+Overall: 11/50
+TP: 11
+FP: 39
+FN: 39
 
-precision: 4 / (4 + 48) = 0.0769
-recall: 4 / (4 + 48) = 0.0769
+precision: 11 / (11 + 39) = 0.22 (22%)
+recall: 11 / (11 + 39) = 0.22 (22%)
+
+
+
+
+
+
+
+
+
+
+
+
+https://www.tripadvisor.com/Hotel_Review-g[0-9]+-d[0-9]+-Reviews-
