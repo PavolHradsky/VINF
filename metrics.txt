@@ -169,15 +169,3 @@ FN: 39
 precision: 11 / (11 + 39) = 0.22 (22%)
 recall: 11 / (11 + 39) = 0.22 (22%)
 
-
-
-
-
-
-
-
-
-
-
-
-https://www.tripadvisor.com/Hotel_Review-g[0-9]+-d[0-9]+-Reviews-
